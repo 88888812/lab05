@@ -13,12 +13,12 @@
    // MOCK_METHOD(int, GetBalance, (), (const, override));
    // MOCK_METHOD(void, ChangeBalance, (int diff), (override));
    // MOCK_METHOD(void, Lock, (), (override));
-   //MOCK_METHOD(void, Unlock, (), (override));
+   MOCK_METHOD(void, Unlock, (), (override));
   };
 
   class MockTransaction: public Transaction{
   public:
-   MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
+  // MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
   };
 
   TEST(Account, GetBalance){
@@ -43,7 +43,7 @@
 
   TEST(Account, Unlock){
    NiceMock<MockAccount> acc(0, 100);
-   //EXPECT_CALL(acc, Unlock()).Times(1);
+   EXPECT_CALL(acc, Unlock()).Times(1);
    acc.Unlock();
   }
 
@@ -51,6 +51,6 @@
    NiceMock<MockAccount> f_acc(0, 200);
    NiceMock<MockAccount> t_acc(1, 300);
    MockTransaction tr;
-   EXPECT_CALL(tr, SaveToDataBase(f_acc, t_acc, 150)).Times(1);
+   //EXPECT_CALL(tr, SaveToDataBase(f_acc, t_acc, 150)).Times(1);
    tr.SaveToDataBase(f_acc, t_acc, 150);
   }
