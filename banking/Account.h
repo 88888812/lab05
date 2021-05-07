@@ -17,6 +17,7 @@ class Account {
   virtual void Unlock();
   int id() const { return id_; }
 
+ bool operator == (const Account) const {return true;}
  private:
   int id_;
   int balance_;
