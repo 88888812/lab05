@@ -43,7 +43,7 @@
 
   TEST(Account, Unlock){
    NiceMock<MockAccount> acc(0, 100);
-   EXPECT_CALL(acc, Unlock()).Times(1);
+  EXPECT_CALL(acc, Unlock()).Times(1);
    acc.Unlock();
   }
 
